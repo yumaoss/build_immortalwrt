@@ -26,7 +26,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: 准备完成
@@ -47,6 +47,18 @@ jobs:
         echo "------------------------------- 磁盘详情 -------------------------------\n"
         df -Th
 
+    - name: 释放磁盘空间（重要！）
+      run: |
+        echo "清理前磁盘使用情况："
+        df -hT /
+        # 删除 GitHub Runner 预装的大垃圾
+        sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup || true
+        sudo rm -rf /usr/lib/jvm /usr/local/share/powershell || true
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY" || true
+        sudo docker system prune -af || true
+        sudo apt-get clean
+        echo "清理后磁盘使用情况："
+        df -hT /
 
     - name: 初始化编译环境
       env:
@@ -64,12 +76,12 @@ jobs:
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: 缓存构建动作
-      uses: stupidloud/cachewrtbuild@main
-      with:
-        ccache: 'true'
-        mixkey: x86-64-lts-24.10.4
-        prefix: ${{ github.workspace }}/openwrt
+#    - name: 缓存构建动作
+#      uses: stupidloud/cachewrtbuild@main
+#      with:
+#        ccache: 'true'
+#        mixkey: x86-64-lts-24.10.4
+#        prefix: ${{ github.workspace }}/openwrt
 
     - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
