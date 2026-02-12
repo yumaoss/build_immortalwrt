@@ -1,4 +1,4 @@
-name: immortalwrt-v24.10.4-builder
+name: immortalwrt-v24.10.5-builder
 
 on:
   repository_dispatch:
