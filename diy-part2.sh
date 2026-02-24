@@ -15,7 +15,8 @@ mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
 core_path="feeds/luci/applications/luci-app-openclash/root/etc/openclash/core"
 goe_path="feeds/luci/applications/luci-app-openclash/root/etc/openclash"
 
-CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/smart/clash-linux-amd64-v1.tar.gz"
+#CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/smart/clash-linux-amd64-v1.tar.gz"
+CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64-v1.tar.gz"
 GEOIP_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
 GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
 
