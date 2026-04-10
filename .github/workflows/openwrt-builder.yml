@@ -86,11 +86,11 @@ jobs:
     - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: 更新golang
-      run: |
-        cd openwrt
-        rm -rf feeds/packages/lang/golang
-        git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+#    - name: 更新golang
+#      run: |
+#        cd openwrt
+#        rm -rf feeds/packages/lang/golang
+#        git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
     - name: 下载自定义插件
       run: |
