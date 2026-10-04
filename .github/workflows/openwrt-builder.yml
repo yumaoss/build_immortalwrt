@@ -105,7 +105,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        cp -rf package/AppFiles/openclash/* feeds/luci/applications/luci-app-openclash/root/etc/openclash/
+        cp -rf openclash_files/* feeds/luci/applications/luci-app-openclash/root/etc/openclash/
 
     - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a
