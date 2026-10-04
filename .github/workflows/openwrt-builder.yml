@@ -1,4 +1,4 @@
-name: immortalwrt-v24.10.5-builder
+name: immortalwrt-v25.12.2-builder
 
 on:
   repository_dispatch:
@@ -86,11 +86,11 @@ jobs:
     - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-#    - name: 更新golang
-#      run: |
-#        cd openwrt
-#        rm -rf feeds/packages/lang/golang
-#        git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+    - name: 更新golang
+      run: |
+        cd openwrt
+        rm -rf feeds/packages/lang/golang
+        git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
     - name: 下载自定义插件
       run: |
